@@ -9,6 +9,11 @@ const connect = function () {
     port: 50541, // PORT number here,
   });
 
+  conn.on('connect',(name) => {
+    name = "SNK"
+    console.log(name, 'successfully connected to game server.');
+  });
+
   //The .on method lets us specify an event name and a fucntion that does something when an event happens
   conn.on('data', (data) => {
     // code that does something when the connection is first established
