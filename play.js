@@ -6,10 +6,33 @@ const net = require("net");
 const connect = function () {
   const conn = net.createConnection({
     host: '10.0.2.15', // IP address here,
-    port: 50541, // PORT number here,
+    port: 50541, // PORT number here,   
   });
 
   conn.on('connect',(name) => {
+
+   /*  setTimeout(() => {
+    console.log('Move up');
+    }, 1000);
+
+    setTimeout(() => {
+    console.log('Move up');
+    }, 2000);
+
+    setTimeout(() => {
+    console.log('Move up');
+    }, 3000); */
+
+    let interval = 1000; 
+
+      const actions = setInterval(() => {
+        console.log('Move up');
+    interval += 1000; 
+    if(interval > 5000){
+      clearInterval(actions)
+    }
+  }, 1000);
+
     name = "SNK"
     console.log(name, 'successfully connected to game server.');
   });
