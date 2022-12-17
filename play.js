@@ -10,7 +10,7 @@ const connect = function () {
   });
 
   conn.on('connect',(name) => {
-
+//Move up move using setTimeout()
    /*  setTimeout(() => {
     console.log('Move up');
     }, 1000);
@@ -23,6 +23,7 @@ const connect = function () {
     console.log('Move up');
     }, 3000); */
 
+    //Using setInterval 
     let interval = 1000; 
 
       const actions = setInterval(() => {
@@ -49,10 +50,26 @@ const connect = function () {
   return conn;
 };
 
+    // setup interface to handle user input from stdin
+const setupInput = function () {
+  const stdin = process.stdin;
+  stdin.setRawMode(true);
+  stdin.setEncoding("utf8");
+  stdin.resume();
+  stdin.on("data", handleUserInput);
+  return stdin;
+};
 
+const handleUserInput = function (key) {
+  // \u0003 maps to ctrl+c input
+if (key === '\u0003') {
+  process.exit();
+}
+};
 
 
 console.log("Connecting ...");
-// connect();
+
+setupInput(); 
 
 module.exports = {connect}; 
