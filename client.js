@@ -1,5 +1,7 @@
 const {connect} = require('./play.js');
-connect();
+const {setupInput} = require('./input.js');
 
+connect();
+setupInput();
 
 
