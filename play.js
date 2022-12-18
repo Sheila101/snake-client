@@ -1,6 +1,6 @@
 const net = require("net"); 
 
-const {setupInput} = require('./input.js');
+const {setupInput} = require('./input');
 
 // establishes a connection with the game server
 const connect = function () {
@@ -10,6 +10,9 @@ const connect = function () {
   });
 
   conn.on('connect',(name) => {
+    conn.write("Say: Hi, let's play");
+   
+  
 //Move up move using setTimeout()
    /*  setTimeout(() => {
     console.log('Move up');
@@ -39,7 +42,9 @@ const connect = function () {
   });
 
   //The .on method lets us specify an event name and a fucntion that does something when an event happens
+  // w = "Move: up, a = "Move: left", s = "Move: down", d = "Move: right"
   conn.on('data', (data) => {
+    
     // code that does something when the connection is first established
     console.log('you ded cuz you idled', data);
   });
@@ -52,7 +57,8 @@ const connect = function () {
 
 console.log("Connecting ...");
 
-setupInput(); 
+setupInput(connect);
+//handleUserInput(); 
 
 module.exports = {connect}; 
 
