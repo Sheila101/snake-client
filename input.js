@@ -15,7 +15,7 @@ const setupInput = (conn) => {
 };
 
 //Actions
-// w = "Move: up, a = "Move: left", s = "Move: down", d = "Move: right"
+// w = "Move: up, a = "Move: left", s = "Move: down", d = "Move: right", q = "Send a message"
 const handleUserInput = function (key) {
   if (key === '\u0077') {
     console.log('Move: up');
@@ -26,6 +26,8 @@ const handleUserInput = function (key) {
     connection.write('Move: down');
   } else if (key === '\u0064') {
     connection.write('Move: right');
+  } else if (key === '\u0051') {
+    connection.write('Say: Hey there');
   } else if (key === '\u0003') {
     // \u0003 maps to ctrl+c input
     process.exit();
